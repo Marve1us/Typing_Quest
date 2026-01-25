@@ -3,14 +3,21 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ProfileProvider } from "@/contexts/profile-context";
 import NotFound from "@/pages/not-found";
+import LandingPage from "@/pages/landing";
+import PlayPage from "@/pages/play";
+import BadgesPage from "@/pages/badges";
+import DashboardPage from "@/pages/dashboard";
 
 function Router() {
   return (
     <Switch>
-      {/* Add pages below */}
-      {/* <Route path="/" component={Home}/> */}
-      {/* Fallback to 404 */}
+      <Route path="/" component={LandingPage} />
+      <Route path="/play" component={PlayPage} />
+      <Route path="/badges" component={BadgesPage} />
+      <Route path="/dashboard" component={DashboardPage} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -18,12 +25,18 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ThemeProvider defaultTheme="light" storageKey="typing-quest-theme">
+      <QueryClientProvider client={queryClient}>
+        <ProfileProvider>
+          <TooltipProvider>
+            <div className="min-h-screen bg-background text-foreground">
+              <Router />
+            </div>
+            <Toaster />
+          </TooltipProvider>
+        </ProfileProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 
