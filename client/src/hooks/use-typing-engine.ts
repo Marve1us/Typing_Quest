@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 
 export interface TypingStats {
   wpm: number;
@@ -76,7 +76,7 @@ export function useTypingEngine({ text, onComplete, timeLimit }: UseTypingEngine
     };
   }, [isStarted, isCompleted, startTime, timeLimit]);
 
-  const calculateStats = useCallback((): TypingStats => {
+  const stats = useMemo((): TypingStats => {
     const elapsed = endTime && startTime 
       ? (endTime - startTime) / 1000 
       : elapsedTime;
@@ -109,11 +109,23 @@ export function useTypingEngine({ text, onComplete, timeLimit }: UseTypingEngine
       clearInterval(timerRef.current);
     }
     if (onComplete) {
-      const stats = calculateStats();
-      stats.elapsedTime = startTime ? (end - startTime) / 1000 : 0;
-      onComplete(stats);
+      const finalElapsed = startTime ? (end - startTime) / 1000 : 0;
+      const minutes = finalElapsed / 60;
+      const totalTypedChars = correctChars + incorrectChars;
+      const finalStats: TypingStats = {
+        wpm: minutes > 0 ? Math.round((correctChars / 5) / minutes) : 0,
+        rawWpm: minutes > 0 ? Math.round((totalTypedChars / 5) / minutes) : 0,
+        accuracy: totalTypedChars > 0 ? Math.round((correctChars / totalTypedChars) * 100) : 100,
+        correctChars,
+        incorrectChars,
+        totalChars: totalTypedChars,
+        errors,
+        backspaces,
+        elapsedTime: finalElapsed,
+      };
+      onComplete(finalStats);
     }
-  }, [onComplete, calculateStats, startTime]);
+  }, [onComplete, startTime, correctChars, incorrectChars, errors, backspaces]);
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (isCompleted) return;
@@ -201,8 +213,6 @@ export function useTypingEngine({ text, onComplete, timeLimit }: UseTypingEngine
     setBackspaces(0);
     setElapsedTime(0);
   }, [text]);
-
-  const stats = calculateStats();
 
   return {
     chars,
