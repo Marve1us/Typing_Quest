@@ -144,6 +144,7 @@ export default function PlayPage() {
           <Button 
             variant="ghost" 
             size="icon" 
+            className="rounded-full"
             onClick={() => navigate("/")}
             data-testid="button-home"
           >
@@ -151,10 +152,10 @@ export default function PlayPage() {
           </Button>
           
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl">
+            <div className="p-2 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-2xl neon-glow-cyan">
               <Rocket size={24} className="text-white" />
             </div>
-            <h1 className="text-xl font-bold gradient-text hidden sm:block">
+            <h1 className="text-xl font-bold gradient-text hidden sm:block neon-text-cyan">
               Typing Quest
             </h1>
           </div>
@@ -239,14 +240,14 @@ export default function PlayPage() {
           />
         )}
 
-        <Card>
+        <Card className="space-glass rounded-2xl border border-purple-500/30">
           <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2">
-              <Rocket className="text-primary" size={24} />
+            <CardTitle className="flex items-center gap-2 text-cyan-400">
+              <Rocket className="text-cyan-400" size={24} />
               Choose Your Game
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              Pick a game to practice your typing skills!
+              Pick a game to explore the typing galaxy!
             </p>
           </CardHeader>
           <CardContent>
@@ -255,15 +256,15 @@ export default function PlayPage() {
         </Card>
 
         {isGuest && (
-          <Card className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-primary/20">
+          <Card className="space-glass rounded-2xl border border-pink-500/30 bg-gradient-to-r from-cyan-500/10 to-pink-500/10">
             <CardContent className="p-6 flex items-center justify-between flex-wrap gap-4">
               <div>
-                <p className="font-semibold">Want to save your progress?</p>
+                <p className="font-semibold text-cyan-300">Want to save your progress?</p>
                 <p className="text-sm text-muted-foreground">
                   Create a profile to track your achievements and earn badges!
                 </p>
               </div>
-              <Button onClick={() => navigate("/")} data-testid="button-create-profile-cta">
+              <Button className="rounded-full neon-glow-pink" onClick={() => navigate("/")} data-testid="button-create-profile-cta">
                 Create Profile
                 <ChevronRight size={18} className="ml-1" />
               </Button>

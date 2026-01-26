@@ -23,13 +23,26 @@ function Router() {
   );
 }
 
+function Starfield() {
+  return (
+    <div className="starfield">
+      <div className="nebula" />
+      <div className="galaxy" />
+      <div className="stars" />
+      <div className="stars-twinkle" />
+      <div className="stars-twinkle-2" />
+    </div>
+  );
+}
+
 function App() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="typing-quest-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="typing-quest-theme">
       <QueryClientProvider client={queryClient}>
         <ProfileProvider>
           <TooltipProvider>
-            <div className="min-h-screen bg-background text-foreground">
+            <Starfield />
+            <div className="min-h-screen bg-transparent text-foreground relative z-0">
               <Router />
             </div>
             <Toaster />

@@ -18,35 +18,35 @@ const gameModeInfoMap: Record<GameMode, GameModeInfo> = {
   [GAME_MODES.RACE_SPRINT]: {
     icon: Rocket,
     name: "Race Sprint",
-    description: "Type sentences to race your car across the finish line!",
+    description: "Race through the stars! Type fast to power your ship!",
     focus: "Speed & Rhythm",
     difficulty: "Medium",
-    gradient: "from-blue-500 to-cyan-400",
+    gradient: "from-cyan-500 to-blue-600",
   },
   [GAME_MODES.ALIEN_DEFENSE]: {
     icon: Skull,
     name: "Alien Defense",
-    description: "Type letters and words to zap incoming aliens!",
+    description: "Defend your planet! Zap invading aliens with your keyboard!",
     focus: "Key Recognition",
     difficulty: "Easy",
-    gradient: "from-green-500 to-emerald-400",
+    gradient: "from-green-400 to-emerald-600",
   },
   [GAME_MODES.HOME_ROW_BUILDER]: {
     icon: Home,
     name: "Home Row Builder",
-    description: "Master the home row keys with guided practice",
+    description: "Master the home row keys in the cosmic training center",
     focus: "Finger Placement",
     difficulty: "Easy",
-    gradient: "from-purple-500 to-pink-400",
+    gradient: "from-purple-500 to-pink-500",
     recommended: true,
   },
   [GAME_MODES.WORD_DASH]: {
     icon: Zap,
     name: "Word Dash",
-    description: "Type themed word lists with streak multipliers!",
+    description: "Collect stellar word combos with streak multipliers!",
     focus: "Common Patterns",
     difficulty: "Medium",
-    gradient: "from-orange-500 to-yellow-400",
+    gradient: "from-pink-500 to-orange-400",
   },
 };
 
@@ -74,21 +74,21 @@ export function GameModeCard({ gameMode, onPlay, disabled = false, stats }: Game
 
   return (
     <Card 
-      className={`overflow-visible hover-elevate transition-all duration-300 ${disabled ? "opacity-50" : ""}`}
+      className={`overflow-visible hover-elevate transition-all duration-300 space-glass rounded-2xl border border-purple-500/30 neon-border-glow ${disabled ? "opacity-50" : ""}`}
       data-testid={`game-card-${gameMode}`}
     >
-      <div className={`h-2 bg-gradient-to-r ${info.gradient}`} />
+      <div className={`h-2 bg-gradient-to-r ${info.gradient} rounded-t-2xl`} />
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <div className={`p-3 rounded-xl bg-gradient-to-br ${info.gradient} shadow-lg`}>
+          <div className={`p-3 rounded-2xl bg-gradient-to-br ${info.gradient} shadow-lg neon-glow-cyan`}>
             <Icon size={28} className="text-white" />
           </div>
           
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-lg">{info.name}</h3>
+              <h3 className="font-bold text-lg text-cyan-300">{info.name}</h3>
               {info.recommended && (
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs rounded-full bg-pink-500/20 text-pink-300 border-pink-500/30">
                   <Trophy size={12} className="mr-1" />
                   Recommended
                 </Badge>
@@ -100,10 +100,10 @@ export function GameModeCard({ gameMode, onPlay, disabled = false, stats }: Game
             </p>
             
             <div className="flex items-center gap-2 mt-3 flex-wrap">
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs rounded-full border-cyan-500/50 text-cyan-300">
                 {info.focus}
               </Badge>
-              <Badge className={`text-xs ${difficultyColors[info.difficulty]}`}>
+              <Badge className={`text-xs rounded-full ${difficultyColors[info.difficulty]}`}>
                 {info.difficulty}
               </Badge>
             </div>
@@ -126,7 +126,7 @@ export function GameModeCard({ gameMode, onPlay, disabled = false, stats }: Game
         </div>
         
         <Button 
-          className="w-full mt-4" 
+          className={`w-full mt-4 rounded-full bg-gradient-to-r ${info.gradient} hover:opacity-90 neon-glow-cyan`}
           onClick={() => onPlay(gameMode)}
           disabled={disabled}
           data-testid={`button-play-${gameMode}`}
