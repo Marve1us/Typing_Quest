@@ -27,7 +27,7 @@ export function LevelXPBar({ level, xp, className = "" }: LevelXPBarProps) {
   
   return (
     <div className={`flex items-center gap-3 ${className}`} data-testid="level-xp-bar">
-      <div className="flex items-center gap-1.5 bg-gradient-to-r from-purple-500 to-blue-500 px-3 py-1.5 rounded-full shadow-lg">
+      <div className="flex items-center gap-1.5 bg-gradient-to-r from-cyan-500 to-purple-600 px-3 py-1.5 rounded-full shadow-lg neon-glow-cyan">
         <Star size={16} className="text-yellow-300 fill-yellow-300" />
         <span className="text-white font-bold text-sm" data-testid="text-level">
           Lvl {level}
@@ -36,7 +36,7 @@ export function LevelXPBar({ level, xp, className = "" }: LevelXPBarProps) {
       
       <div className="flex-1 max-w-48">
         <div className="relative">
-          <Progress value={progress} className="h-3" />
+          <Progress value={progress} className="h-3 rounded-full" />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-[10px] font-bold text-white drop-shadow-md">
               {currentLevelXP}/{xpNeeded} XP
@@ -46,7 +46,7 @@ export function LevelXPBar({ level, xp, className = "" }: LevelXPBarProps) {
       </div>
       
       <div className="flex items-center gap-1 text-muted-foreground">
-        <Zap size={14} className="text-yellow-500" />
+        <Zap size={14} className="text-cyan-400" />
         <span className="text-xs font-medium" data-testid="text-total-xp">
           {xp} total
         </span>

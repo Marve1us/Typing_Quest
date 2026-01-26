@@ -23,19 +23,19 @@ export default function BadgesPage() {
 
   if (isGuest || !profile) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 game-bg-pattern">
-        <Card className="max-w-md w-full">
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <Card className="max-w-md w-full space-glass rounded-2xl border border-purple-500/40">
           <CardContent className="p-8 text-center">
-            <Lock className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-            <h2 className="text-2xl font-bold mb-2">Profile Required</h2>
+            <Lock className="w-16 h-16 mx-auto text-cyan-400 mb-4" />
+            <h2 className="text-2xl font-bold mb-2 text-cyan-300">Profile Required</h2>
             <p className="text-muted-foreground mb-6">
-              Create a profile to earn and collect badges!
+              Create a profile to earn cosmic badges!
             </p>
             <div className="flex flex-col gap-3">
-              <Button onClick={() => navigate("/")} data-testid="button-create-profile-badges">
+              <Button className="rounded-full neon-glow-cyan" onClick={() => navigate("/")} data-testid="button-create-profile-badges">
                 Create Profile
               </Button>
-              <Button variant="outline" onClick={() => navigate("/play")}>
+              <Button variant="outline" className="rounded-full border-purple-500/50" onClick={() => navigate("/play")}>
                 Back to Games
               </Button>
             </div>
@@ -52,12 +52,13 @@ export default function BadgesPage() {
           <Button 
             variant="ghost" 
             size="icon" 
+            className="rounded-full"
             onClick={() => navigate("/play")}
             data-testid="button-back-badges"
           >
             <ArrowLeft size={20} />
           </Button>
-          <h1 className="text-2xl font-bold gradient-text">Badges & Rewards</h1>
+          <h1 className="text-2xl font-bold gradient-text neon-text-cyan">Badges & Rewards</h1>
         </div>
 
         <div className="flex items-center gap-3">
@@ -76,21 +77,21 @@ export default function BadgesPage() {
       </header>
 
       <main className="max-w-4xl mx-auto space-y-8">
-        <Card className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-primary/20">
+        <Card className="space-glass rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 neon-border-glow">
           <CardContent className="p-6">
             <div className="flex items-center gap-4 flex-wrap">
-              <div className="p-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full">
+              <div className="p-4 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full neon-glow-cyan">
                 <Trophy className="w-8 h-8 text-white" />
               </div>
               <div className="flex-1">
-                <h2 className="text-xl font-bold">Your Collection</h2>
+                <h2 className="text-xl font-bold text-cyan-300">Your Collection</h2>
                 <p className="text-muted-foreground">
-                  {earnedBadgeTypes.length} of {Object.keys(BADGE_TYPES).length} badges earned
+                  {earnedBadgeTypes.length} of {Object.keys(BADGE_TYPES).length} cosmic badges earned
                 </p>
               </div>
               <div className="text-right">
-                <div className="flex items-center gap-1 text-2xl font-bold">
-                  <Star className="text-yellow-500 fill-yellow-500" size={24} />
+                <div className="flex items-center gap-1 text-2xl font-bold text-pink-400">
+                  <Star className="text-yellow-400 fill-yellow-400" size={24} />
                   {earnedBadgeTypes.length}
                 </div>
                 <p className="text-sm text-muted-foreground">Total Badges</p>
@@ -113,8 +114,8 @@ export default function BadgesPage() {
           <>
             {earnedBadgeTypes.length > 0 && (
               <section>
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <Trophy className="text-yellow-500" size={20} />
+                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+                  <Trophy className="text-cyan-400" size={20} />
                   Earned Badges
                 </h3>
                 <div className="grid gap-3">
@@ -130,24 +131,24 @@ export default function BadgesPage() {
             )}
 
             <section>
-              <h3 className="text-lg font-semibold mb-4">All Badges</h3>
+              <h3 className="text-lg font-semibold mb-4 text-purple-300">All Badges</h3>
               <BadgeGrid earnedBadges={earnedBadgeTypes} showAll />
             </section>
           </>
         )}
 
-        <Card>
+        <Card className="space-glass rounded-2xl border border-green-500/30">
           <CardHeader>
-            <CardTitle className="text-lg">How to Earn Badges</CardTitle>
+            <CardTitle className="text-lg text-green-300">How to Earn Badges</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p>Keep practicing to unlock more badges! Here's how:</p>
+            <p>Keep exploring the galaxy to unlock more badges! Here's how:</p>
             <ul className="list-disc list-inside space-y-1">
-              <li><strong>Speed badges:</strong> Reach 20 or 30 WPM in a session</li>
-              <li><strong>Accuracy badges:</strong> Achieve 90% or 95% accuracy</li>
-              <li><strong>Streak badges:</strong> Practice 3, 7, or 14 days in a row</li>
-              <li><strong>Game badges:</strong> Master specific game modes</li>
-              <li><strong>Practice badges:</strong> Complete multiple sessions</li>
+              <li><strong className="text-cyan-300">Speed badges:</strong> Reach 20 or 30 WPM in a session</li>
+              <li><strong className="text-green-300">Accuracy badges:</strong> Achieve 90% or 95% accuracy</li>
+              <li><strong className="text-pink-300">Streak badges:</strong> Practice 3, 7, or 14 days in a row</li>
+              <li><strong className="text-purple-300">Game badges:</strong> Master specific game modes</li>
+              <li><strong className="text-yellow-300">Practice badges:</strong> Complete multiple sessions</li>
             </ul>
           </CardContent>
         </Card>

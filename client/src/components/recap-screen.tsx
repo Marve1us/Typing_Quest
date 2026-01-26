@@ -54,27 +54,27 @@ export function RecapScreen({
     "keep_practicing";
 
   const performanceMessages = {
-    amazing: { title: "Amazing!", subtitle: "You're a typing superstar!", icon: Trophy, color: "text-yellow-500" },
-    great: { title: "Great Job!", subtitle: "Keep up the awesome work!", icon: Star, color: "text-purple-500" },
-    good: { title: "Nice Work!", subtitle: "You're making progress!", icon: TrendingUp, color: "text-blue-500" },
-    keep_practicing: { title: "Good Try!", subtitle: "Practice makes perfect!", icon: Target, color: "text-green-500" },
+    amazing: { title: "Stellar!", subtitle: "You're a cosmic typing champion!", icon: Trophy, color: "text-cyan-400" },
+    great: { title: "Great Job!", subtitle: "Keep exploring the galaxy!", icon: Star, color: "text-pink-400" },
+    good: { title: "Nice Work!", subtitle: "You're on the right trajectory!", icon: TrendingUp, color: "text-green-400" },
+    keep_practicing: { title: "Good Try!", subtitle: "Practice makes perfect!", icon: Target, color: "text-purple-400" },
   };
 
   const message = performanceMessages[performanceLevel];
   const MessageIcon = message.icon;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 game-bg-pattern" data-testid="recap-screen">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8" data-testid="recap-screen">
       <div className="w-full max-w-2xl space-y-6">
         <div className="text-center mb-8">
-          <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center mb-4`}>
+          <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-600/30 flex items-center justify-center mb-4 neon-glow-cyan animate-pulse-glow`}>
             <MessageIcon className={`w-10 h-10 ${message.color}`} />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold gradient-text neon-text-cyan mb-2">
             {message.title}
           </h1>
           <p className="text-muted-foreground">{message.subtitle}</p>
-          <Badge variant="outline" className="mt-2">
+          <Badge variant="outline" className="mt-2 rounded-full border-cyan-500/50 text-cyan-300">
             {gameModeNames[gameMode]}
           </Badge>
         </div>
@@ -85,18 +85,18 @@ export function RecapScreen({
           time={stats.elapsedTime}
         />
 
-        <Card className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-yellow-500/20">
+        <Card className="space-glass rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 neon-border-glow">
           <CardContent className="p-4 flex items-center justify-center gap-3">
-            <Zap className="text-yellow-500" size={24} />
-            <span className="text-xl font-bold">+{xpEarned} XP earned!</span>
+            <Zap className="text-cyan-400" size={24} />
+            <span className="text-xl font-bold text-cyan-300">+{xpEarned} XP earned!</span>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="space-glass rounded-2xl border border-purple-500/30">
           <CardContent className="p-4 space-y-3">
-            <h3 className="font-semibold flex items-center gap-2">
-              <Target size={18} className="text-primary" />
-              Session Details
+            <h3 className="font-semibold flex items-center gap-2 text-cyan-300">
+              <Target size={18} className="text-cyan-400" />
+              Mission Details
             </h3>
             
             <div className="grid grid-cols-2 gap-4 text-sm">
@@ -129,11 +129,11 @@ export function RecapScreen({
           </CardContent>
         </Card>
 
-        <Card className="bg-blue-500/5 border-blue-500/20">
+        <Card className="space-glass rounded-2xl border border-green-500/30 bg-green-500/5">
           <CardContent className="p-4 flex items-start gap-3">
-            <Lightbulb className="text-blue-500 mt-0.5 flex-shrink-0" size={20} />
+            <Lightbulb className="text-green-400 mt-0.5 flex-shrink-0" size={20} />
             <div>
-              <p className="font-medium text-sm mb-1">Tip</p>
+              <p className="font-medium text-sm mb-1 text-green-300">Space Tip</p>
               <p className="text-sm text-muted-foreground">{randomTip}</p>
             </div>
           </CardContent>
@@ -142,7 +142,7 @@ export function RecapScreen({
         <div className="flex flex-col sm:flex-row gap-3 pt-4">
           <Button 
             variant="outline" 
-            className="flex-1"
+            className="flex-1 rounded-full border-purple-500/50"
             onClick={onExit}
             data-testid="button-exit-recap"
           >
@@ -152,7 +152,7 @@ export function RecapScreen({
           
           <Button 
             variant="outline"
-            className="flex-1"
+            className="flex-1 rounded-full border-pink-500/50"
             onClick={onChooseGame}
             data-testid="button-choose-game"
           >
@@ -161,7 +161,7 @@ export function RecapScreen({
           </Button>
           
           <Button 
-            className="flex-1"
+            className="flex-1 rounded-full neon-glow-cyan"
             onClick={onPlayAgain}
             data-testid="button-play-again-recap"
           >

@@ -38,13 +38,13 @@ export function StreakDisplay({
   }
 
   return (
-    <Card data-testid="streak-display">
+    <Card className="space-glass rounded-2xl border border-orange-500/30 neon-border-glow" data-testid="streak-display">
       <CardContent className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`p-2 rounded-full ${
               currentStreak > 0 
-                ? "bg-gradient-to-br from-orange-400 to-red-500" 
+                ? "bg-gradient-to-br from-orange-400 to-pink-500 neon-glow-pink" 
                 : "bg-muted"
             }`}>
               <Flame 
@@ -54,7 +54,7 @@ export function StreakDisplay({
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Current Streak</p>
-              <p className="text-2xl font-bold" data-testid="text-current-streak-full">
+              <p className="text-2xl font-bold text-orange-400" data-testid="text-current-streak-full">
                 {currentStreak} {currentStreak === 1 ? "day" : "days"}
               </p>
             </div>
@@ -62,17 +62,17 @@ export function StreakDisplay({
           
           <div className="text-right">
             <p className="text-sm text-muted-foreground">Best</p>
-            <p className="text-lg font-semibold text-primary" data-testid="text-longest-streak">
+            <p className="text-lg font-semibold text-cyan-400" data-testid="text-longest-streak">
               {longestStreak} days
             </p>
           </div>
         </div>
         
         {streakSavesRemaining > 0 && (
-          <div className="mt-3 pt-3 border-t flex items-center gap-2 text-sm text-muted-foreground">
-            <Shield size={16} className="text-blue-500" />
+          <div className="mt-3 pt-3 border-t border-purple-500/30 flex items-center gap-2 text-sm text-muted-foreground">
+            <Shield size={16} className="text-cyan-400" />
             <span data-testid="text-streak-saves">
-              {streakSavesRemaining} streak {streakSavesRemaining === 1 ? "save" : "saves"} remaining this week
+              {streakSavesRemaining} streak {streakSavesRemaining === 1 ? "shield" : "shields"} remaining this week
             </span>
           </div>
         )}

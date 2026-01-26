@@ -38,19 +38,19 @@ export default function DashboardPage() {
 
   if (isGuest || !profile) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 game-bg-pattern">
-        <Card className="max-w-md w-full">
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <Card className="max-w-md w-full space-glass rounded-2xl border border-purple-500/40">
           <CardContent className="p-8 text-center">
-            <BarChart3 className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-            <h2 className="text-2xl font-bold mb-2">Profile Required</h2>
+            <BarChart3 className="w-16 h-16 mx-auto text-cyan-400 mb-4" />
+            <h2 className="text-2xl font-bold mb-2 text-cyan-300">Profile Required</h2>
             <p className="text-muted-foreground mb-6">
-              Create a profile to track your progress and see your stats!
+              Create a profile to track your cosmic progress!
             </p>
             <div className="flex flex-col gap-3">
-              <Button onClick={() => navigate("/")} data-testid="button-create-profile-dashboard">
+              <Button className="rounded-full neon-glow-cyan" onClick={() => navigate("/")} data-testid="button-create-profile-dashboard">
                 Create Profile
               </Button>
-              <Button variant="outline" onClick={() => navigate("/play")}>
+              <Button variant="outline" className="rounded-full border-purple-500/50" onClick={() => navigate("/play")}>
                 Back to Games
               </Button>
             </div>
@@ -102,12 +102,13 @@ export default function DashboardPage() {
           <Button 
             variant="ghost" 
             size="icon" 
+            className="rounded-full"
             onClick={() => navigate("/play")}
             data-testid="button-back-dashboard"
           >
             <ArrowLeft size={20} />
           </Button>
-          <h1 className="text-2xl font-bold gradient-text">Progress Dashboard</h1>
+          <h1 className="text-2xl font-bold gradient-text neon-text-cyan">Mission Control</h1>
         </div>
 
         <div className="flex items-center gap-3">
@@ -137,47 +138,47 @@ export default function DashboardPage() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Card>
+          <Card className="space-glass rounded-2xl border border-cyan-500/30 neon-border-glow">
             <CardContent className="p-4 flex items-center gap-4">
-              <div className="p-3 rounded-full bg-blue-500/10">
-                <TrendingUp className="text-blue-500" size={24} />
+              <div className="p-3 rounded-full bg-cyan-500/20 neon-glow-cyan">
+                <TrendingUp className="text-cyan-400" size={24} />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Avg WPM (7 days)</p>
-                <p className="text-2xl font-bold" data-testid="stat-avg-wpm">{avgWpm}</p>
+                <p className="text-2xl font-bold text-cyan-400" data-testid="stat-avg-wpm">{avgWpm}</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="space-glass rounded-2xl border border-green-500/30 neon-border-glow">
             <CardContent className="p-4 flex items-center gap-4">
-              <div className="p-3 rounded-full bg-green-500/10">
-                <Target className="text-green-500" size={24} />
+              <div className="p-3 rounded-full bg-green-500/20 neon-glow-green">
+                <Target className="text-green-400" size={24} />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Avg Accuracy</p>
-                <p className="text-2xl font-bold" data-testid="stat-avg-accuracy">{avgAccuracy}%</p>
+                <p className="text-2xl font-bold text-green-400" data-testid="stat-avg-accuracy">{avgAccuracy}%</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="space-glass rounded-2xl border border-pink-500/30 neon-border-glow">
             <CardContent className="p-4 flex items-center gap-4">
-              <div className="p-3 rounded-full bg-purple-500/10">
-                <Clock className="text-purple-500" size={24} />
+              <div className="p-3 rounded-full bg-pink-500/20 neon-glow-pink">
+                <Clock className="text-pink-400" size={24} />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Practice Time</p>
-                <p className="text-2xl font-bold" data-testid="stat-practice-time">{totalMinutesPracticed} min</p>
+                <p className="text-2xl font-bold text-pink-400" data-testid="stat-practice-time">{totalMinutesPracticed} min</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <Card>
+        <Card className="space-glass rounded-2xl border border-purple-500/30">
           <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2">
-              <Calendar size={20} className="text-primary" />
+            <CardTitle className="flex items-center gap-2 text-purple-300">
+              <Calendar size={20} className="text-purple-400" />
               This Week
             </CardTitle>
           </CardHeader>
@@ -196,10 +197,10 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         ) : chartData.length > 0 ? (
-          <Card>
+          <Card className="space-glass rounded-2xl border border-cyan-500/30">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2">
-                <BarChart3 size={20} className="text-primary" />
+              <CardTitle className="flex items-center gap-2 text-cyan-300">
+                <BarChart3 size={20} className="text-cyan-400" />
                 Progress Chart
               </CardTitle>
             </CardHeader>
